@@ -1,0 +1,397 @@
+{
+    "Main": {
+        "json_version": 3,
+        "name": "Arduino on BoB",
+        "serial_device": "MainArduino",
+        "debug_level": 1
+    },
+    "Game": {
+        "debug_text_on_screen": { "value": true, "rw": true }
+    },
+    "Digital Inputs": {
+        "1": {
+            "name": { "value": "SB1 Red Small Box HEXAGON" },
+            "pin": { "value": 53 },
+            "debounce": { "value": 10 },
+            "pullup": { "value": 1 },
+            "activated": { "value": 0 },
+            "normal_value": { "value": 1 }
+        },
+        "2": {
+            "name": { "value": "SB2 Green Small Box TRIANGLE" },
+            "pin": { "value": 52 },
+            "debounce": { "value": 10 },
+            "pullup": { "value": 1 },
+            "activated": { "value": 0 },
+            "normal_value": { "value": 1 }
+        },
+        "3": {
+            "name": { "value": "SB3 Blue Small Box SQUARE" },
+            "pin": { "value": 51 },
+            "debounce": { "value": 10 },
+            "pullup": { "value": 1 },
+            "activated": { "value": 0 },
+            "normal_value": { "value": 1 }
+        },
+        "4": {
+            "name": { "value": "SB4 Yellow Small Box PENTAGON" },
+            "pin": { "value": 50 },
+            "debounce": { "value": 10 },
+            "pullup": { "value": 1 },
+            "activated": { "value": 0 },
+            "normal_value": { "value": 1 }
+        },
+        "5": {
+            "name": { "value": "SB5 Orange Small Box CIRCLE" },
+            "pin": { "value": 49 },
+            "debounce": { "value": 10 },
+            "pullup": { "value": 1 },
+            "activated": { "value": 0 },
+            "normal_value": { "value": 1 }
+        },
+        "6": {
+            "name": { "value": "SB6 Red Large Box TRIANGLE" },
+            "pin": { "value": 48 },
+            "debounce": { "value": 10 },
+            "pullup": { "value": 1 },
+            "activated": { "value": 0 },
+            "normal_value": { "value": 1 }
+        },
+        "7": {
+            "name": { "value": "SB7 Green Large Box SQUARE" },
+            "pin": { "value": 47 },
+            "debounce": { "value": 10 },
+            "pullup": { "value": 1 },
+            "activated": { "value": 0 },
+            "normal_value": { "value": 1 }
+        },
+        "8": {
+            "name": { "value": "SB8 Blue Large Box PENTAGON" },
+            "pin": { "value": 46 },
+            "debounce": { "value": 10 },
+            "pullup": { "value": 1 },
+            "activated": { "value": 0 },
+            "normal_value": { "value": 1 }
+        },
+        "9": {
+            "name": { "value": "SB9 Yellow Large Box HEXAGON" },
+            "pin": { "value": 45 },
+            "debounce": { "value": 10 },
+            "pullup": { "value": 1 },
+            "activated": { "value": 0 },
+            "normal_value": { "value": 1 }
+        },
+        "10": {
+            "name": { "value": "SB10 Orange Large Box CIRCLE" },
+            "pin": { "value": 44 },
+            "debounce": { "value": 10 },
+            "pullup": { "value": 1 },
+            "activated": { "value": 0 },
+            "normal_value": { "value": 1 }
+        }
+    },
+    "Digital Outputs": {
+        "1": {
+            "name": { "value": "DoorLock" },
+            "pin": { "value": 10 },
+            "STATES": {
+                "READY": { "value": 1 },
+                "GAME": { "value": 0 },
+                "MISSION": { "value": 0 },
+                "EXIT": { "value": 1 },
+                "AFTER": { "value": 1 },
+                "TEST": { "value": 0 },
+                "SERVICE": { "value": 0 },
+                "FIRE": { "value": 0 },
+                "OFF": { "value": 0 }
+            }
+        },
+        "2": {
+            "name": { "value": "SB1 LED" },
+            "pin": { "value": 29 },
+            "STATES": {
+                "READY": { "value": 0 },
+                "GAME": { "value": 0 },
+                "MISSION": { "value": 0 },
+                "EXIT": { "value": 0 },
+                "AFTER": { "value": 0 },
+                "TEST": { "value": 1 },
+                "SERVICE": { "value": 1 },
+                "FIRE": { "value": 0 },
+                "OFF": { "value": 0 }
+            }
+        },
+        "3": {
+            "name": { "value": "SB2 LED" },
+            "pin": { "value": 28 },
+            "STATES": {
+                "READY": { "value": 0 },
+                "GAME": { "value": 0 },
+                "MISSION": { "value": 0 },
+                "EXIT": { "value": 0 },
+                "AFTER": { "value": 0 },
+                "TEST": { "value": 1 },
+                "SERVICE": { "value": 1 },
+                "FIRE": { "value": 0 },
+                "OFF": { "value": 0 }
+            }
+        },
+        "4": {
+            "name": { "value": "SB3 LED" },
+            "pin": { "value": 27 },
+            "STATES": {
+                "READY": { "value": 0 },
+                "GAME": { "value": 0 },
+                "MISSION": { "value": 0 },
+                "EXIT": { "value": 0 },
+                "AFTER": { "value": 0 },
+                "TEST": { "value": 1 },
+                "SERVICE": { "value": 1 },
+                "FIRE": { "value": 0 },
+                "OFF": { "value": 0 }
+            }
+        },
+        "5": {
+            "name": { "value": "SB4 LED" },
+            "pin": { "value": 26 },
+            "STATES": {
+                "READY": { "value": 0 },
+                "GAME": { "value": 0 },
+                "MISSION": { "value": 0 },
+                "EXIT": { "value": 0 },
+                "AFTER": { "value": 0 },
+                "TEST": { "value": 1 },
+                "SERVICE": { "value": 1 },
+                "FIRE": { "value": 0 },
+                "OFF": { "value": 0 }
+            }
+        },
+        "6": {
+            "name": { "value": "SB5 LED" },
+            "pin": { "value": 25 },
+            "STATES": {
+                "READY": { "value": 0 },
+                "GAME": { "value": 0 },
+                "MISSION": { "value": 0 },
+                "EXIT": { "value": 0 },
+                "AFTER": { "value": 0 },
+                "TEST": { "value": 1 },
+                "SERVICE": { "value": 1 },
+                "FIRE": { "value": 0 },
+                "OFF": { "value": 0 }
+            }
+        },
+        "7": {
+            "name": { "value": "SB6 LED" },
+            "pin": { "value": 24 },
+            "STATES": {
+                "READY": { "value": 0 },
+                "GAME": { "value": 0 },
+                "MISSION": { "value": 0 },
+                "EXIT": { "value": 0 },
+                "AFTER": { "value": 0 },
+                "TEST": { "value": 1 },
+                "SERVICE": { "value": 1 },
+                "FIRE": { "value": 0 },
+                "OFF": { "value": 0 }
+            }
+        },
+        "8": {
+            "name": { "value": "SB7 LED" },
+            "pin": { "value": 23 },
+            "STATES": {
+                "READY": { "value": 0 },
+                "GAME": { "value": 0 },
+                "MISSION": { "value": 0 },
+                "EXIT": { "value": 0 },
+                "AFTER": { "value": 0 },
+                "TEST": { "value": 1 },
+                "SERVICE": { "value": 1 },
+                "FIRE": { "value": 0 },
+                "OFF": { "value": 0 }
+            }
+        },
+        "9": {
+            "name": { "value": "SB8 LED" },
+            "pin": { "value": 22 },
+            "STATES": {
+                "READY": { "value": 0 },
+                "GAME": { "value": 0 },
+                "MISSION": { "value": 0 },
+                "EXIT": { "value": 0 },
+                "AFTER": { "value": 0 },
+                "TEST": { "value": 1 },
+                "SERVICE": { "value": 1 },
+                "FIRE": { "value": 0 },
+                "OFF": { "value": 0 }
+            }
+        },
+        "10": {
+            "name": { "value": "SB9 LED" },
+            "pin": { "value": 37 },
+            "STATES": {
+                "READY": { "value": 0 },
+                "GAME": { "value": 0 },
+                "MISSION": { "value": 0 },
+                "EXIT": { "value": 0 },
+                "AFTER": { "value": 0 },
+                "TEST": { "value": 1 },
+                "SERVICE": { "value": 1 },
+                "FIRE": { "value": 0 },
+                "OFF": { "value": 0 }
+            }
+        },
+        "11": {
+            "name": { "value": "SB10 LED" },
+            "pin": { "value": 36 },
+            "STATES": {
+                "READY": { "value": 0 },
+                "GAME": { "value": 0 },
+                "MISSION": { "value": 0 },
+                "EXIT": { "value": 0 },
+                "AFTER": { "value": 0 },
+                "TEST": { "value": 1 },
+                "SERVICE": { "value": 1 },
+                "FIRE": { "value": 0 },
+                "OFF": { "value": 0 }
+            }
+        }
+    },
+    "RGB": {
+        "1": {
+            "name": { "value": "Login" },
+            "pin": { "value": 2 },
+            "pixel_type": { "value": 0 },
+            "pixels": { "value": 26, "rw": true },
+            "actual_pixels": { "value": 26, "rw": true },
+            "colors": {
+                "READY": { "value": 3 },
+                "GAME": { "value": 2 },
+                "MISSION": { "value": 2 },
+                "EXIT": { "value": 2 },
+                "AFTER": { "value": 3 },
+                "TEST": { "value": 4 },
+                "SERVICE": { "value": 1 },
+                "FIRE": { "value": 6 },
+                "OFF": { "value": 0 }
+            },
+            "brightness": {
+                "READY": { "value": 8 },
+                "GAME": { "value": 8 },
+                "MISSION": { "value": 8 },
+                "EXIT": { "value": 8 },
+                "AFTER": { "value": 8 },
+                "TEST": { "value": 8 },
+                "SERVICE": { "value": 8 },
+                "FIRE": { "value": 8 },
+                "OFF": { "value": 4 }
+            }
+        },
+        "2": {
+            "name": { "value": "Cell light" },
+            "pin": { "value": 6 },
+            "pixel_type": { "value": 0 },
+            "pixels": { "value": 72, "rw": true },
+            "actual_pixels": { "value": 72, "rw": true },
+            "colors": {
+                "READY": { "value": 0 },
+                "GAME": { "value": 1, "rw": true },
+                "MISSION": { "value": 1 },
+                "EXIT": { "value": 1 },
+                "AFTER": { "value": 1 },
+                "TEST": { "value": 1 },
+                "SERVICE": { "value": 1 },
+                "FIRE": { "value": 1 },
+                "OFF": { "value": 0 }
+            },
+            "brightness": {
+                "READY": { "value": 64 },
+                "GAME": { "value": 64, "rw": true },
+                "MISSION": { "value": 64 },
+                "EXIT": { "value": 64, "rw": true },
+                "AFTER": { "value": 64, "rw": true },
+                "TEST": { "value": 64, "rw": true },
+                "SERVICE": { "value": 64, "rw": true },
+                "FIRE": { "value": 64 },
+                "OFF": { "value": 64 }
+            },
+            "effects": {
+                "READY": { "value": 0 },
+                "GAME": { "value": 0 },
+                "MISSION": { "value": 0 },
+                "EXIT": { "value": 8 },
+                "AFTER": { "value": 0 },
+                "TEST": { "value": 0 },
+                "SERVICE": { "value": 0 },
+                "FIRE": { "value": 0 },
+                "OFF": { "value": 0 }
+            },
+            "effects_color1": {
+                "READY": { "value": 0 },
+                "GAME": { "value": 0 },
+                "MISSION": { "value": 0 },
+                "EXIT": { "value": 2 },
+                "AFTER": { "value": 0 },
+                "TEST": { "value": 0 },
+                "SERVICE": { "value": 0 },
+                "FIRE": { "value": 0 },
+                "OFF": { "value": 0 }
+            },
+            "effects_color2": {
+                "READY": { "value": 0 },
+                "GAME": { "value": 0 },
+                "MISSION": { "value": 0 },
+                "EXIT": { "value": 3 },
+                "AFTER": { "value": 0 },
+                "TEST": { "value": 0 },
+                "SERVICE": { "value": 0 },
+                "FIRE": { "value": 0 },
+                "OFF": { "value": 0 }
+            },
+            "effects_color3": {
+                "READY": { "value": 0 },
+                "GAME": { "value": 0 },
+                "MISSION": { "value": 0 },
+                "EXIT": { "value": 0 },
+                "AFTER": { "value": 0 },
+                "TEST": { "value": 0 },
+                "SERVICE": { "value": 0 },
+                "FIRE": { "value": 0 },
+                "OFF": { "value": 0 }
+            },
+            "effects_delay": {
+                "READY": { "value": 0 },
+                "GAME": { "value": 0 },
+                "MISSION": { "value": 0 },
+                "EXIT": { "value": 0 },
+                "AFTER": { "value": 0 },
+                "TEST": { "value": 0 },
+                "SERVICE": { "value": 0 },
+                "FIRE": { "value": 0 },
+                "OFF": { "value": 0 }
+            },
+            "effects_loop": {
+                "READY": { "value": 0 },
+                "GAME": { "value": 0 },
+                "MISSION": { "value": 0 },
+                "EXIT": { "value": 0 },
+                "AFTER": { "value": 0 },
+                "TEST": { "value": 0 },
+                "SERVICE": { "value": 0 },
+                "FIRE": { "value": 1 },
+                "OFF": { "value": 0 }
+            },
+            "effects_alternate": {
+                "READY": { "value": 0 },
+                "GAME": { "value": 0 },
+                "MISSION": { "value": 0 },
+                "EXIT": { "value": 0 },
+                "AFTER": { "value": 0 },
+                "TEST": { "value": 0 },
+                "SERVICE": { "value": 0 },
+                "FIRE": { "value": 0 },
+                "OFF": { "value": 0 }
+            }
+        }
+    }
+}
