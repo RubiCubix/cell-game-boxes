@@ -6,7 +6,7 @@
         "debug_level": 1
     },
     "Game": {
-        "debug_text_on_screen": { "value": true, "rw": true }
+        "debug_text_on_screen": { "value": false, "rw": true }
     },
     "Digital Inputs": {
         "1": {

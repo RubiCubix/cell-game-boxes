@@ -126,47 +126,35 @@ class Level:
 
     def level_specific_time_counter(self):
         do_only_level_specific = False
-
         # Emulate legacy timed events using elapsed time
-        if self._game.has_game_ended() is False and self._game.get_state() == 'GAME':
-            elapsed_s = int((self._game.current_time_ms() - self._start_timestamp_ms) / 1000)
+        if (not self._game.has_game_ended()) and self._game.get_state() == "GAME":
+            elapsed_s = (self._game.current_time_ms() - self._start_timestamp_ms) // 1000
 
-            # Door close event (legacy: at (maxTime - time) == closeDoor)
-            close_door_at = int(self._safe_get_param('closeDoor', -1))
-            if close_door_at >= 0 and (not self._close_door_sent) and elapsed_s == close_door_at:
-                self._close_door_sent = True
-                self._send_close_door()
+            # Fire when we've reached/passed the target, exactly once
+            if elapsed_s >= self.generate_at_elapsed_s:
+                self.generate_symbols()
 
-            # Countdown warning at 10s remaining (best-effort if maxTime is configured)
-            max_time = int(self._safe_get_param('maxTime', -1))
-            if max_time > 0:
-                remaining = max_time - elapsed_s
-                if remaining == 10:
-                    self._safe_play("PI_Countdown")
+                # Schedule next generation (example: every 6 seconds)
+                self.generate_at_elapsed_s = elapsed_s + self.time_between_buttons
 
-                if remaining <= 0:
-                    self._game.initiate_end_game("Time is up")
-                    return do_only_level_specific
 
-                # Legacy: generate new symbols at a specific elapsed time
-                if elapsed_s == self.generate_at_elapsed_s:
-                    self.generate_symbols()
-
-        return do_only_level_specific
+                return do_only_level_specific
 
     def level_specific_sensor_value_changed(self, board_id, value_type, sensor_id, sensor_value):
         do_only_level_specific = False
 
-        # Treat any positive value as "pressed"
+        # Determine pressed state based on configured normal value
         try:
-            pressed = int(sensor_value) > 0
+            normal_value = self._arduinos[0].digital_inputs[sensor_id - 1].get_normal_value()
+            pressed = int(sensor_value) != int(normal_value)
         except Exception:
+            # Fallback: treat any truthy deviation as pressed
             pressed = bool(sensor_value)
 
         if not pressed:
             return do_only_level_specific
 
-        # Legacy uses a sensorFlags range check
+
         try:
             sensor_id_int = int(sensor_id)
         except Exception:
@@ -174,7 +162,7 @@ class Level:
 
         sensor_index = sensor_id_int - 1
 
-        if sensor_id_int < 0 or sensor_id_int >= len(self.flag_sensor):
+        if sensor_id_int < 0 or sensor_id_int > len(self.flag_sensor):
             return do_only_level_specific
 
         if self.flag_sensor[sensor_index]:
@@ -309,14 +297,14 @@ class Level:
             # Big image
             self._gui.draw_image_on_subsurface(
                 big_key, 'contentsurface',
-                (self._game.content_surface_width / 2, 220),
+                (self._game.content_surface_width / 2 + 200, 320),
                 center_aligned=True
             )
 
             # Small image (scaled down)
             self._gui.draw_image_on_subsurface(
                 small_key, 'contentsurface',
-                (260, 520),
+                (self._game.content_surface_width / 2 - 300, 420),
                 center_aligned=True,
                 scale=0.5
             )
@@ -442,12 +430,13 @@ class Level:
         if not self._game.debug_text_on_screen:
             return
 
-        small = self.small_box._correct_sensor_id
-        large = self.large_box_correct_sensor_id
+        small = self.small_box.correct_button_sensor_id
+        large = self.large_box.correct_button_sensor_id
 
-        if small is None and large is None:
+        if small == -1 and large == -1:
             text = "No active target"
         else:
-            text = f"Correct sensors → Small: {small}, Large: {large}"
+            text = f"Correct sensors: Small: {small}, Large: {large}"
 
-        self._game.set_text("Info", text)
+        self._gui.set_text("Info", text)
+

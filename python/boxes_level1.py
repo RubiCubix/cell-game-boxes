@@ -143,16 +143,18 @@ class Level:
     def level_specific_sensor_value_changed(self, board_id, value_type, sensor_id, sensor_value):
         do_only_level_specific = False
 
-        # Treat any positive value as "pressed"
+        # Determine pressed state based on configured normal value
         try:
-            pressed = int(sensor_value) > 0
+            normal_value = self._arduinos[0].digital_inputs[sensor_id - 1].get_normal_value()
+            pressed = int(sensor_value) != int(normal_value)
         except Exception:
+            # Fallback: treat any truthy deviation as pressed
             pressed = bool(sensor_value)
 
         if not pressed:
             return do_only_level_specific
 
-        # Legacy uses a sensorFlags range check
+
         try:
             sensor_id_int = int(sensor_id)
         except Exception:
@@ -160,7 +162,7 @@ class Level:
 
         sensor_index = sensor_id_int - 1
 
-        if sensor_id_int < 0 or sensor_id_int >= len(self.flag_sensor):
+        if sensor_id_int < 0 or sensor_id_int > len(self.flag_sensor):
             return do_only_level_specific
 
         if self.flag_sensor[sensor_index]:
@@ -295,14 +297,14 @@ class Level:
             # Big image
             self._gui.draw_image_on_subsurface(
                 big_key, 'contentsurface',
-                (self._game.content_surface_width / 2, 220),
+                (self._game.content_surface_width / 2 + 200, 320),
                 center_aligned=True
             )
 
             # Small image (scaled down)
             self._gui.draw_image_on_subsurface(
                 small_key, 'contentsurface',
-                (260, 520),
+                (self._game.content_surface_width / 2 - 300, 420),
                 center_aligned=True,
                 scale=0.5
             )
@@ -434,7 +436,7 @@ class Level:
         if small == -1 and large == -1:
             text = "No active target"
         else:
-            text = f"Correct sensors → Small: {small}, Large: {large}"
+            text = f"Correct sensors: Small: {small}, Large: {large}"
 
         self._gui.set_text("Info", text)
 

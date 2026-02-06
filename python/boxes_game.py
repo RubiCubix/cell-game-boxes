@@ -1,14 +1,3 @@
-"""
-Boxes game (Python 3) adapted to the Prison Island cell-base framework.
-
-Original legacy game: PI_Game_Boxes.py (Python 2)
-Port notes:
-- Uses Level structure (Level0-3) like the reference project.
-- Level0 and Level1 are identical (Level1 imports Level0).
-- GUI uses base application's GUI drawing helpers (no custom GUI class).
-- Arduino I/O uses arduino.send_digital_output_values and arduino.send_rgb_values
-  with safe fallbacks for older APIs.
-"""
 #! /usr/bin/env python3
 # -*- coding: utf-8 -*-
 
@@ -53,6 +42,9 @@ class Game(pi_class_game.Game):  # pi_class_game provided by base application
 
     def game_specific_start_game(self):
         do_only_game_specific = False
+
+        self._sound.play_sound_file('pi_boxes_ambient', loop=-1)
+
         if self.current_level is not None and self.current_level.level_specific_start_game():
             return do_only_game_specific
         return do_only_game_specific
